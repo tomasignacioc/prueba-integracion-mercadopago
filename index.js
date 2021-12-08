@@ -20,9 +20,11 @@ mercadopago.configure({
 router.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
+router.get('/auth', (req, res) =>{
+    res.redirect('https://auth.mercadopago.com.ar/authorization?client_id=7308381246776093&response_type=code&platform_id=mp&state=user1&redirect_uri=http://localhost:3000')
+})
 
 router.post('/checkout', (req, res) => { // creo que seria la ruta adonde me llevaria el boton de "pagar" para hace el checkout
-    console.log(req.body)
     let preference = {
         items: [
             {
